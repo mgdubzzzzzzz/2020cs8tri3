@@ -1,59 +1,17 @@
-@CHARSET "UTF-8";
-body{
-    background-color: #060;
-}
-#outer{
-    width: 700px;
-    height: 400px;
-    background-color: #222;
-    border: 4px solid #fff;
-    border-radius: 40px;
-    position: relative;
+init();
+
+function init(){
+    for(var r=0; r<12; r++)
+        for(var c=0; c<4; c++){
+            var color = (r+c)%2===0?' black': ' white';
+            $('#finishLine').append("<div class='checker " + color + "'></div>");
+        }
+    startRace();
 }
 
-#inner{
-    width: 500px;
-    height: 200px;
-    background-color: #060;
-    border: 4px solid #fff;
-    border-radius: 10px;
-    position: absolute;
-    left: 100px;
-    top: 100px;
-}
-
-#finishLine{
-    width: 40px;
-    height: 120px;
-    font-size: 0;
-    position: absolute;
-    left: 210px;
-    top: 300px;
-}
-
-.checker{
-    width: 10px;
-    height: 10px;
-    display: inline-block;
-}
-
-.black{
-    background-color: black;
-}
-
-.white{
-    background-color: white;
-}
-
-.car{
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    position: absolute;
-}
-
-#car1{
-    background-color: purple;
-    left: 100px;
-    top: 300px;
+function startRace(){
+    TweenMax.to("#car1",2,{x:520,ease:Sine.easeOut});
+    TweenMax.to("#car1",1.5,{x:500, y:-320,delay:1.7, ease:Sine.easeOut});
+    TweenMax.to("#car1",2,{x:-80, y:-300,delay:3, ease:Sine.easeOut});
+    TweenMax.to("#car1",2,{x:-50, y:0,delay:4, ease:Sine.easeOut});
 }
